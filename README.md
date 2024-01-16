@@ -1,5 +1,6 @@
 # React + Vite
 React Customer Management Application
+
 This project involves developing a React application for managing customer data. The provided HTML page includes a customer table, and a sample JSON file contains customer data.
 
 Instructions:
