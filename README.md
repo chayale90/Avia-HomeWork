@@ -11,7 +11,7 @@ Create a React component that renders the provided HTML page, and loads the cust
 Implement a search field that allows users to search for a specific customer based on their name or phone number. The table should be filtered dynamically as the user types in the search field.
 
 3. Filtering by Plan
-Add an option to filter customers based on their plan. Include a dropdown or another suitable UI element that enables users to filter the table by customer plan.
+Add an option to filter customers based on their plan.
 
 4. Export to CSV
 Implement a button that exports the current table data to a CSV file and saves it. This functionality should allow users to download the customer table in CSV format.
