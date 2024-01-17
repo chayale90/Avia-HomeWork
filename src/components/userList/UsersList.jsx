@@ -12,7 +12,8 @@ export default function UsersList() {
   const [search, setSearch] = useState('');
   const [selectedPlan, setselectedPlan] = useState('');
   const { usersData } = useSelector(myStore => myStore.usersSlice);
-
+  const textFieldStyles = { ...theme.textField.smallTextField };
+  
   console.log(usersData);
 
   const filteredUsers = usersData.filter((user) => {
@@ -27,14 +28,12 @@ export default function UsersList() {
   });
 
   console.log("out");
-
-
   //  לבחוץ דיבאונס
+
   const handleChangePlan = (e) => {
     setselectedPlan(e.target.value);
   }
 
-  const textFieldStyles = { ...theme.textField.smallTextField };
   return (
     <>
       <Grid container className={UserListCSS.actionsTable}>
