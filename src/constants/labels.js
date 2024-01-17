@@ -1,6 +1,6 @@
 export const HEADLINES = {
   USERSLIST: "רשימת לקוחות",
-  ADDUSER: "הוספת לקוח",
+  ADDUSER: "הוספת לקוח"
 };
 
 export const USER_PROPERTIES = {
@@ -8,7 +8,7 @@ export const USER_PROPERTIES = {
   LASTNAME: "שם משפחה",
   PHONE: "טלפון",
   EMAIL: "מייל",
-  PLAN: "תכנית",
+  PLAN: "תכנית"
 };
 
 export const PLANS = [
