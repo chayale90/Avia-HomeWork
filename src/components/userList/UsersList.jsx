@@ -1,18 +1,22 @@
 import { Box, Button, FormControl, Grid, InputLabel, MenuItem, Paper, Select, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, } from "@mui/material";
 import { useState } from "react";
-import { theme } from "@/theme/theme";
-import { PLANS, USER_PROPERTIES } from "@/constants/labels";
-import ROUTES from '@/constants/routes';
-import users from "../../customers.json"
+import { useSelector } from "react-redux";
 import { Link as RouterLink } from 'react-router-dom';
+import { theme } from "@/theme/theme";
+import ROUTES from '@/constants/routes';
+import { PLANS, USER_PROPERTIES } from "@/constants/labels";
 import { CSVLink } from "react-csv";
+// import users from "../../customers.json"
 import "./userList.css";
 
 export default function UsersList() {
   const [search, setSearch] = useState('');
   const [selectedPlan, setselectedPlan] = useState('');
+  const { usersData } = useSelector(myStore => myStore.usersSlice);
 
-  const filteredUsers = users.filter((user) => {
+  console.log(usersData);
+
+  const filteredUsers = usersData.filter((user) => {
     // לעשות מיננימום רינדור של קומפוננטה
     return (
       (search === '' ||
@@ -67,7 +71,7 @@ export default function UsersList() {
         <Box sx={{ display: "flex", justifyContent: "center", gap: 2, marginTop: { xs: 2, lg: 0 } }}>
 
           <CSVLink
-            data={users}
+            data={usersData}
             filename={"Customers.csv"}
             target="_blank"
             className="btn-CSV"
