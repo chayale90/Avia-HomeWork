@@ -1,0 +1,13 @@
+.btnSubmit {
+  float: inline-end;
+  margin-top: var(--space40);
+  border-radius: var(--space40);
+  padding: var(--space8) var(--space48);
+}
+
+.plansSelect {
+  width: 50%;
+  margin: var(--space8);
+  display: center;
+  justify-content: center;
+}

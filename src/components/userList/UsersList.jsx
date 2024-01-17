@@ -6,8 +6,7 @@ import { theme } from "@/theme/theme";
 import ROUTES from '@/constants/routes';
 import { PLANS, USER_PROPERTIES } from "@/constants/labels";
 import { CSVLink } from "react-csv";
-// import users from "../../customers.json"
-import "./userList.css";
+import UserListCSS from "./UserList.module.css";
 
 export default function UsersList() {
   const [search, setSearch] = useState('');
@@ -38,7 +37,7 @@ export default function UsersList() {
   const textFieldStyles = { ...theme.textField.smallTextField };
   return (
     <>
-      <Grid container justifyContent="space-between" alignItems="center" marginY={3}>
+      <Grid container className={UserListCSS.actionsTable}>
         <Box sx={{ width: { lg: "45%", xs: "100%" }, display: "flex", gap: 3 }}>
           <TextField
             onChange={(e) => { setSearch(e.target.value) }}
@@ -68,8 +67,7 @@ export default function UsersList() {
           </FormControl>
         </Box>
 
-        <Box sx={{ display: "flex", justifyContent: "center", gap: 2, marginTop: { xs: 2, lg: 0 } }}>
-
+        <Box className={UserListCSS.btnsExportAdd} sx={{  marginTop: { xs: 2, lg: 0 } }}>
           <CSVLink
             data={usersData}
             filename={"Customers.csv"}

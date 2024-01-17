@@ -1,0 +1,16 @@
+.btn-CSV {
+  color: var(--green); 
+}
+
+.actionsTable {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: var(--space24) 0;
+}
+
+.btnsExportAdd {
+  display: flex;
+  gap: var(--space16);
+
+}
