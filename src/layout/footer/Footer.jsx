@@ -1,10 +1,9 @@
 import { Stack, Typography, Container } from "@mui/material";
 
-
 export default function Footer() {
     return (
-        <Container sx={{ mt: 'auto' }}>
-            <Stack sx={{ pb: 0.5, pt: 2, display: 'flex', justifyContent: 'end', alignItems: 'center' }} direction={{ sm: "row" }} paddingX={2}>
+        <Container sx={{ mt: 'auto'}}>
+            <Stack sx={{ py: 2, display: 'flex', justifyContent: 'end', alignItems: 'center' }} direction={{ sm: "row" }}>
                 <Typography variant="body2" gutterBottom={false}>
                      Avia © 2024 |{" "}
                     <a
