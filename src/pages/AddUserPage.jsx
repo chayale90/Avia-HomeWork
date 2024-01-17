@@ -1,8 +1,8 @@
 import { Button, Container, Typography } from '@mui/material'
-import AddUser from '@/components/addUser/AddUser';
-import { HEADLINES } from '@/constants/labels';
 import { useNavigate } from 'react-router-dom';
 import { ChevronRightSharp } from '@mui/icons-material';
+import AddUser from '@/components/addUser/AddUser';
+import { HEADLINES } from '@/constants/labels';
 
 export default function AddUserPage() {
     const nav = useNavigate();
