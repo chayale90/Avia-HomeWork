@@ -91,10 +91,7 @@ export const theme = responsiveFontSizes(
         width: "20%", 
       },
       smallTextField: {
-        width: "35%", 
-        '@media (max-width:600px)': {
-          width: "40%",
-        },
+        width: "50%", 
       },
       bigTextField: {
         width: "40%", 
