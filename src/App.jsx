@@ -6,13 +6,15 @@ import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 //project imports
 import AppRoutes from "./AppRoutes";
+import usersSlice from "./slices/usersSlice";
 import darkModeSlice from "./slices/darkModeSlice";
 import "./App.css";
 
 
 export const myStore = configureStore({
   reducer: {
-    darkModeSlice
+    darkModeSlice,
+    usersSlice
   }
 })
 
