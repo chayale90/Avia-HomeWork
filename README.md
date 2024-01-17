@@ -13,10 +13,10 @@ Implement a search field that allows users to search for a specific customer bas
 Add an option to filter customers based on their plan.
 
 4. Export to CSV
-Implement a button that exports the current table data to a CSV file and saves it. This functionality should allow users to download the customer table in CSV format.
+A button that exports the current table data to a CSV file and saves it. This functionality should allow users to download the customer table in CSV format.
 
-5. Add New Customer Form
-Create a form that allows users to add new customers to the table. Include fields for the customer's first name, last name, phone number, email, and plan. Upon submission, the new customer should be added to the table.
+5. Add New Customer 
+A form that allows users to add new customers to the table. Include fields for the customer's first name, last name, phone number, email, and plan. Upon submission, the new customer should be added to the table.
 
 Getting Started:
 Clone the repository.
