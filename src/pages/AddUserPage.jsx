@@ -7,7 +7,7 @@ import { ChevronRightSharp } from '@mui/icons-material';
 export default function AddUserPage() {
     const nav = useNavigate();
     return (
-        <Container maxWidth="md" sx={{ paddingY: 4 }}>
+        <Container maxWidth="md" sx={{ paddingY: 2 }}>
             <Button
                 sx={{ marginTop: 1 }}
                 onClick={() => nav(-1)}

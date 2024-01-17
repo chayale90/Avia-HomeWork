@@ -24,7 +24,7 @@ export default function AddUser() {
         nav(ROUTES.HOME);
         toast.success("לקוח נוסף בהצלחה")
         console.log(users);
-        // Code in this block will always run, whether there was an error or not
+
         setDisplayProgress("none");
 
     };
@@ -35,7 +35,7 @@ export default function AddUser() {
           
 
             <form onSubmit={handleSubmit(onSubForm)}>
-                <Grid container direction={"row"} justifyContent={"space-between"} marginY={4}>
+                <Grid container direction={"row"} justifyContent={"space-between"} marginY={3}>
                     <Box width={"45%"}>
                         <TextField
                             {...register('firstname', {
@@ -72,7 +72,7 @@ export default function AddUser() {
                     </Box>
                 </Grid>
 
-                <Grid container direction={"row"} justifyContent={"space-between"} marginY={4}>
+                <Grid container direction={"row"} justifyContent={"space-between"} marginY={3}>
                     <Box width={"45%"}>
                         <TextField
                             {...register('phone', {
