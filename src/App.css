@@ -9,7 +9,7 @@
   --clr-green: #155e64;
   --clr-green-bright: #155d64de;
   --clr-red: #860a35;
-  --clr-cream: #f2f9f5;
+  --clr-cream: #f9f8f2;
   --space8: 8px;
   --space16: 16px;
   --space24: 24px;
@@ -24,6 +24,7 @@ body {
   direction: rtl;
   background: var(--clr-cream);
 }
+
 
 /* icon nagishLi design*/
 #NagishLiTrigger {
