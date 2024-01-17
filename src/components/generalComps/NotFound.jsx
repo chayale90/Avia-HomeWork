@@ -1,6 +1,6 @@
 import { Box, Button, Container, CssBaseline, Typography } from '@mui/material'
 import { ChevronRightSharp } from "@mui/icons-material";
-import ROUTES from '@/constants/routeConstants';
+import ROUTES from '@/constants/routes';
 import { Link as RouterLink } from 'react-router-dom';
 
 
