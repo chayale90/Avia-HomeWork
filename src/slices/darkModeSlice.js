@@ -6,7 +6,7 @@ const initValue = {
 }
 
 const darkModeSlice = createSlice({
-    name: "darkMode",
+    name: "darkModeSlice",
     initialState: initValue,
     reducers: {
         changeDarkMode: (state, action) => {

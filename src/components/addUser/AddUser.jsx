@@ -1,15 +1,17 @@
 import { Box, Grid, FormControl, CircularProgress, FormHelperText, InputLabel, MenuItem, Select, TextField, Button } from '@mui/material'
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+//project imports
 import { PLANS, USER_PROPERTIES } from "@/constants/labels";
 import ROUTES from '@/constants/routes';
+import { addUser } from "@/slices/usersSlice"
 import "./adduser.css";
-import users from "../../customers.json"
-import { toast } from 'react-toastify';
-
 
 export default function AddUser() {
+    const dispatch = useDispatch();
     const nav = useNavigate();
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [selectedPlan, setSelectedPlan] = useState("");
@@ -18,22 +20,14 @@ export default function AddUser() {
 
     const onSubForm = (userData) => {
         setDisplayProgress("flex");
-
-        users.push(userData);
-
+        dispatch(addUser(userData));
         nav(ROUTES.HOME);
-        toast.success("לקוח נוסף בהצלחה")
-        console.log(users);
-
+        toast.success("לקוח נוסף בהצלחה");
         setDisplayProgress("none");
-
     };
-
 
     return (
         <Box className="addUser">
-          
-
             <form onSubmit={handleSubmit(onSubForm)}>
                 <Grid container direction={"row"} justifyContent={"space-between"} marginY={3}>
                     <Box width={"45%"}>
@@ -42,7 +36,7 @@ export default function AddUser() {
                                 required: { value: true, message: 'חובה למלא שם' },
                                 pattern: { value: /^[a-zA-Zא-ת\s]+$/, message: 'שם חייב להכיל רק אותיות' },
                                 minLength: { value: 2, message: 'שם חייב להיות לפחות 2 אותיות' },
-                                maxLength: { value: 99, message: 'אורך השם חייב להיות עד 99 תווים' }
+                                maxLength: { value: 20, message: 'אורך השם חייב להיות עד 20 תווים' }
                             })}
                             variant="outlined"
                             fullWidth
@@ -59,7 +53,7 @@ export default function AddUser() {
                                 required: { value: true, message: 'חובה למלא שם משפחה' },
                                 pattern: { value: /^[a-zA-Zא-ת\s]+$/, message: 'שם משפחה חייב להכיל רק אותיות' },
                                 minLength: { value: 2, message: 'שם משפחה חייב להיות לפחות 2 אותיות' },
-                                maxLength: { value: 99, message: 'אורך שם המשפחה חייב להיות עד 99 תווים' }
+                                maxLength: { value: 20, message: 'אורך שם המשפחה חייב להיות עד 20 תווים' }
                             })}
                             variant="outlined"
                             fullWidth
@@ -92,7 +86,10 @@ export default function AddUser() {
                     </Box>
                     <Box width={"45%"}>
                         <TextField
-                            {...register('email', { required: true, pattern: regEmail, maxLength: 99 })}
+                            {...register('email', {
+                                required: { value: true, message: 'חובה למלא מייל' },
+                                pattern: regEmail
+                            })}
                             fullWidth
                             type="email"
                             label={USER_PROPERTIES.EMAIL + "*"}
