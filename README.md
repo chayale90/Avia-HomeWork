@@ -7,7 +7,7 @@ Instructions:
 Create a React component that renders the provided HTML page, and loads the customer data from the sample JSON file into the table.
 
 2. Search Field
-Implement a search field that allows users to search for a specific customer based on their name or phone number. The table should be filtered dynamically as the user types in the search field.
+Implement a search field that allows users to search for a specific customer based on their name or phone number. The table filter dynamically as the user types in the search field.
 
 3. Filtering by Plan
 Add an option to filter customers based on their plan.
