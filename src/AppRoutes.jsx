@@ -2,10 +2,10 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // project imports
-import NotFound from "@/components/general_comps/NotFound";
-import ROUTES from "@/constants/routeConstants";
-import UsersPage from "./pages/UsersPage";
+import NotFound from "@/components/generalComps/NotFound";
+import ROUTES from "@/constants/routes";
 import AddUserPage from "./pages/AddUserPage";
+import UsersPage from "./pages/usersPage";
 
 export default function AppRoutes() {
   return (
