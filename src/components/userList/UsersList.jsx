@@ -1,16 +1,19 @@
 import { Box, Button, FormControl, Grid, InputLabel, MenuItem, Paper, Select, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, } from "@mui/material";
 import { useState } from "react";
 import { theme } from "@/theme/theme";
-import { plans } from "@/constants/constansts.js"
-import ROUTES from '@/constants/routeConstants';
+import { PLANS, USER_PROPERTIES } from "@/constants/labels";
+import ROUTES from '@/constants/routes';
 import users from "../../customers.json"
 import { Link as RouterLink } from 'react-router-dom';
+import { CSVLink } from "react-csv";
+import "./userList.css";
 
 export default function UsersList() {
   const [search, setSearch] = useState('');
   const [selectedPlan, setselectedPlan] = useState('');
 
   const filteredUsers = users.filter((user) => {
+    // לעשות מיננימום רינדור של קומפוננטה
     return (
       (search === '' ||
         user.firstname.includes(search.trim()) ||
@@ -20,6 +23,10 @@ export default function UsersList() {
     );
   });
 
+  console.log("out");
+
+
+  //  לבחוץ דיבאונס
   const handleChangePlan = (e) => {
     setselectedPlan(e.target.value);
   }
@@ -28,12 +35,13 @@ export default function UsersList() {
   return (
     <>
       <Grid container justifyContent="space-between" alignItems="center" marginY={3}>
-        <Box sx={{ width: { lg: "70%", xs: "100%" }, display: "flex", gap: 3 }}>
+        <Box sx={{ width: { lg: "45%", xs: "100%" }, display: "flex", gap: 3 }}>
           <TextField
             onChange={(e) => { setSearch(e.target.value) }}
             label="חיפוש לפי שם, שם משפחה, טלפון"
             variant="outlined"
             sx={textFieldStyles}
+            fullWidth
           />
 
           <FormControl sx={textFieldStyles}>
@@ -44,11 +52,12 @@ export default function UsersList() {
               value={selectedPlan}
               label="תוכנית"
               onChange={handleChangePlan}
+              fullWidth
             >
               <MenuItem value="">כל התוכניות</MenuItem>
-              {plans?.map((plan, index) => (
-                <MenuItem key={index} value={plan}>
-                  {plan}
+              {PLANS?.map((plan) => (
+                <MenuItem key={plan.id} value={plan.name}>
+                  {plan.name}
                 </MenuItem>
               ))}
             </Select>
@@ -56,20 +65,32 @@ export default function UsersList() {
         </Box>
 
         <Box sx={{ display: "flex", justifyContent: "center", gap: 2, marginTop: { xs: 2, lg: 0 } }}>
-          <Button component={RouterLink} variant="outlined" to={ROUTES.ADD_USER} >הוסף לקוח</Button>
-          <Button variant="contained">ייצוא ל SCV</Button>
+
+          <CSVLink
+            data={users}
+            filename={"Customers.csv"}
+            target="_blank"
+            className="btn-CSV"
+          >
+            <Button variant="outlined">
+              ייצוא ל CSV
+            </Button>
+          </CSVLink>
+
+          <Button variant="contained" component={RouterLink} to={ROUTES.ADD_USER} >הוסף לקוח</Button>
         </Box>
 
       </Grid>
+
       <TableContainer component={Paper}>
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell>שם פרטי</TableCell>
-              <TableCell>שם משפחה</TableCell>
-              <TableCell>טלפון</TableCell>
-              <TableCell>מייל</TableCell>
-              <TableCell>תכנית</TableCell>
+              <TableCell>{USER_PROPERTIES.FIRSTNAME}</TableCell>
+              <TableCell>{USER_PROPERTIES.LASTNAME}</TableCell>
+              <TableCell>{USER_PROPERTIES.PHONE}</TableCell>
+              <TableCell>{USER_PROPERTIES.EMAIL}</TableCell>
+              <TableCell>{USER_PROPERTIES.PLAN}</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -86,6 +107,5 @@ export default function UsersList() {
         </Table>
       </TableContainer>
     </>
-
   );
 }
