@@ -29,9 +29,6 @@ The sample customer data is provided in a JSON file (customers.json).
 This file is initially loaded from the server when the application starts.
 When a new customer is added, it is stored in the global Redux state and sent to the server via an HTTP request, updating the JSON data.
 
-## Server Setup
-Ensure that the JSON file containing customer data is hosted on the server. The initial loading of the application fetches this data. The server should handle POST requests to update customer data when a new customer is added.
-
 ## Features
 ### 1. React Component for Customer Table
 A React component renders the customer table based on the provided HTML page. It loads customer data from the sample JSON file.
