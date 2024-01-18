@@ -12,19 +12,24 @@ Ensure that the JSON file containing customer data is hosted on the server. The 
 
 ## Features
 1. React Component for Customer Table
-A React component renders the customer table based on the provided HTML page. It loads customer data from the sample JSON file.
+A React component renders the customer table based on the provided HTML page.
+ It loads customer data from the sample JSON file.
 
-2. Search Field
-The application includes a search field allowing users to dynamically search for customers by name or phone number. The table updates in real-time as the user types.
+3. Search Field
+The application includes a search field allowing users to dynamically search for customers by name or phone number.
+ The table updates in real-time as the user types.
 
-3. Filtering by Plan
-Users can filter customers based on their plan. A dropdown option allows selection, and the table updates accordingly.
+5. Filtering by Plan
+Users can filter customers based on their plan.
+ A dropdown option allows selection, and the table updates accordingly.
 
-4. Export to CSV
-A button is provided to export the current table data to a CSV file. Users can download the customer table in CSV format.
+7. Export to CSV
+A button is provided to export the current table data to a CSV file.
+ Users can download the customer table in CSV format.
 
-5. Add New Customer
-A form enables users to add new customers to the table. Fields include first name, last name, phone number, email, and plan. Upon submission, the new customer is added to both Redux state and the server's JSON data.
+9. Add New Customer
+A form enables users to add new customers to the table.
+ Fields include first name, last name, phone number, email, and plan. Upon submission, the new customer is added to both Redux state and the server's JSON data.
 
 #### Getting Started:
 Clone the repository.
