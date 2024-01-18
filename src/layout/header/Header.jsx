@@ -41,64 +41,66 @@ const Header = () => {
     }
 
     return (
-        <AppBar position="static" sx={{ py: 1 }} color={darkMode === false ? 'primary' : 'darkMode'} >
-            <Container maxWidth="lg">
-                <Grid container justifyContent="space-between" alignItems="center">
-                    {/* big screen */}
-                    <Grid item >
-                        <img src={Logo} alt="logo" width={50} style={{ borderRadius: "5px" }} />
-                    </Grid>
-
-
-                    <Box display={"flex"} gap={16}>
-                        <Grid item sx={{ display: { xs: 'none', md: 'flex' }, px: 3, color: darkMode === true ? 'primary' : 'yellow' }}>
-                            <Tooltip title={darkMode === false ? "החשך" : 'האר'}>
-                                <IconButton onClick={()=>{dispatch(changeDarkMode())}} color={darkMode ? "primary" : "inherit"}>
-                                    {darkMode === true ? <Brightness7Icon /> : <Brightness4Icon />}
-                                </IconButton>
-                            </Tooltip>
+        <>
+            <AppBar position="static" sx={{ py: 1 }} color={darkMode === false ? 'primary' : 'darkMode'} >
+                <Container maxWidth="lg">
+                    <Grid container justifyContent="space-between" alignItems="center">
+                        {/* big screen */}
+                        <Grid item >
+                            <img src={Logo} alt="logo" width={50} style={{ borderRadius: "5px" }} />
                         </Grid>
 
 
-                        <Grid item>
-                            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt="Avatar" src={manImg} referrerPolicy="no-referrer" />
-                            </IconButton>
-                            <Menu
-                                sx={{ mt: 3 }}
-                                id="menu-appbar"
-                                anchorEl={anchorElUser}
-                                anchorOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
-                                keepMounted
-                                transformOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
-                                open={Boolean(anchorElUser)}
-                                onClose={handleCloseUserMenu}
-                            >
-                                <MenuItem
-                               onClick={()=>{dispatch(changeDarkMode())}}
-                                    sx={{
-                                        display: { xs: 'block', md: 'none', px: 3 },
-                                    }}
-                                >
-                                    {darkMode === false ? "החשך" : 'האר'}
-                                    <IconButton color="inherit">
+                        <Box display={"flex"} gap={16}>
+                            <Grid item sx={{ display: { xs: 'none', md: 'flex' }, px: 3, color: darkMode === true ? 'primary' : 'yellow' }}>
+                                <Tooltip title={darkMode === false ? "החשך" : 'האר'}>
+                                    <IconButton onClick={() => { dispatch(changeDarkMode()) }} color={darkMode ? "primary" : "inherit"}>
                                         {darkMode === true ? <Brightness7Icon /> : <Brightness4Icon />}
                                     </IconButton>
-                                </MenuItem>
-                                <MenuItem onClick={onVictoryClick}>יחד ננצח!</MenuItem>
-                            </Menu>
-                        </Grid>
-                    </Box>
+                                </Tooltip>
+                            </Grid>
 
-                </Grid>
-            </Container>
-        </AppBar>
+
+                            <Grid item>
+                                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                                    <Avatar alt="Avatar" src={manImg} referrerPolicy="no-referrer" />
+                                </IconButton>
+                                <Menu
+                                    sx={{ mt: 3 }}
+                                    id="menu-appbar"
+                                    anchorEl={anchorElUser}
+                                    anchorOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'right',
+                                    }}
+                                    keepMounted
+                                    transformOrigin={{
+                                        vertical: 'top',
+                                        horizontal: 'right',
+                                    }}
+                                    open={Boolean(anchorElUser)}
+                                    onClose={handleCloseUserMenu}
+                                >
+                                    <MenuItem
+                                        onClick={() => { dispatch(changeDarkMode()) }}
+                                        sx={{
+                                            display: { xs: 'block', md: 'none', px: 3 },
+                                        }}
+                                    >
+                                        {darkMode === false ? "החשך" : 'האר'}
+                                        <IconButton color="inherit">
+                                            {darkMode === true ? <Brightness7Icon /> : <Brightness4Icon />}
+                                        </IconButton>
+                                    </MenuItem>
+                                    <MenuItem onClick={onVictoryClick}>יחד ננצח!</MenuItem>
+                                </Menu>
+                            </Grid>
+                        </Box>
+
+                    </Grid>
+                </Container>
+            </AppBar>
+        </>
     );
 };
 

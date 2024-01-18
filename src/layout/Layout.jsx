@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
-import Header from "./header/Header";
-import Footer from "./footer/Footer";
 import { useMemo } from "react";
 import { theme } from "@/theme/theme";
 import { Box } from "@mui/material";
 import { useSelector } from "react-redux";
+import Header from "./header/Header";
+import Footer from "./footer/Footer";
 
 export default function Layout() {
   const { darkMode } = useSelector(myStore => myStore.darkModeSlice);

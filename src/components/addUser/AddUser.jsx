@@ -4,10 +4,10 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-//project imports
 import { PLANS, USER_PROPERTIES } from "@/constants/labels";
 import ROUTES from '@/constants/routes';
 import { addUser } from "@/slices/usersSlice"
+import { createUser } from '@/services/userService';
 import AddUserCSS from "./AddUser.module.css";
 
 export default function AddUser() {
@@ -17,17 +17,27 @@ export default function AddUser() {
     const [selectedPlan, setSelectedPlan] = useState("");
     const regEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
     const [displayProgress, setDisplayProgress] = useState("none");
+    
+    const addUserToJson = async (userData) => {
+        try {
+            await createUser(userData);
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
 
     const onSubForm = (userData) => {
         setDisplayProgress("flex");
+        addUserToJson(userData);
         dispatch(addUser(userData));
         nav(ROUTES.HOME);
         toast.success("לקוח נוסף בהצלחה");
         setDisplayProgress("none");
     };
 
-    return (
 
+    return (
         <form onSubmit={handleSubmit(onSubForm)}>
             <Grid container direction={"row"} justifyContent={"space-between"} marginY={3}>
                 <Box width={"45%"}>

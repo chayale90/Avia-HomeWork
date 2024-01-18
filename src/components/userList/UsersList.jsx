@@ -7,17 +7,14 @@ import ROUTES from '@/constants/routes';
 import { PLANS, USER_PROPERTIES } from "@/constants/labels";
 import { CSVLink } from "react-csv";
 import UserListCSS from "./UserList.module.css";
+import Loading from "../generalComps/Loading";
 
 export default function UsersList() {
   const [search, setSearch] = useState('');
   const [selectedPlan, setselectedPlan] = useState('');
-  const { usersData } = useSelector(myStore => myStore.usersSlice);
-  const textFieldStyles = { ...theme.textField.smallTextField };
-  
-  console.log(usersData);
+  const { usersData, isReadJsonData } = useSelector(myStore => myStore.usersSlice);
 
-  const filteredUsers = usersData.filter((user) => {
-    // לעשות מיננימום רינדור של קומפוננטה
+  const filteredUsers = usersData?.filter((user) => {
     return (
       (search === '' ||
         user.firstname.includes(search.trim()) ||
@@ -25,14 +22,13 @@ export default function UsersList() {
         user.phone.includes(search.trim())) &&
       (selectedPlan === '' || user.plan === selectedPlan)
     );
-  });
-
-  console.log("out");
-  //  לבחוץ דיבאונס
+  })
 
   const handleChangePlan = (e) => {
     setselectedPlan(e.target.value);
   }
+
+  const textFieldStyles = { ...theme.textField.smallTextField };
 
   return (
     <>
@@ -66,7 +62,7 @@ export default function UsersList() {
           </FormControl>
         </Box>
 
-        <Box className={UserListCSS.btnsExportAdd} sx={{  marginTop: { xs: 2, lg: 0 } }}>
+        <Box className={UserListCSS.btnsExportAdd} sx={{ marginTop: { xs: 2, lg: 0 } }}>
           <CSVLink
             data={usersData}
             filename={"Customers.csv"}
@@ -82,31 +78,38 @@ export default function UsersList() {
         </Box>
 
       </Grid>
-
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>{USER_PROPERTIES.FIRSTNAME}</TableCell>
-              <TableCell>{USER_PROPERTIES.LASTNAME}</TableCell>
-              <TableCell>{USER_PROPERTIES.PHONE}</TableCell>
-              <TableCell>{USER_PROPERTIES.EMAIL}</TableCell>
-              <TableCell>{USER_PROPERTIES.PLAN}</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {filteredUsers?.map((user, index) => (
-              <TableRow key={index}>
-                <TableCell>{user.firstname}</TableCell>
-                <TableCell>{user.lastname}</TableCell>
-                <TableCell>{user.phone}</TableCell>
-                <TableCell>{user.email}</TableCell>
-                <TableCell>{user.plan}</TableCell>
+      {usersData.length === 0 ?
+        <Loading display={!isReadJsonData ? "flex" : "none"} sixe="4rem"/>
+        :
+        <TableContainer component={Paper}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>{USER_PROPERTIES.FIRSTNAME}</TableCell>
+                <TableCell>{USER_PROPERTIES.LASTNAME}</TableCell>
+                <TableCell>{USER_PROPERTIES.PHONE}</TableCell>
+                <TableCell>{USER_PROPERTIES.EMAIL}</TableCell>
+                <TableCell>{USER_PROPERTIES.PLAN}</TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </TableHead>
+            <TableBody>
+              {
+                filteredUsers.map((user, index) => (
+                  <TableRow key={index}>
+                    <TableCell>{user.firstname}</TableCell>
+                    <TableCell>{user.lastname}</TableCell>
+                    <TableCell>{user.phone}</TableCell>
+                    <TableCell>{user.email}</TableCell>
+                    <TableCell>{user.plan}</TableCell>
+                  </TableRow>
+
+                ))}
+
+            </TableBody>
+          </Table>
+        </TableContainer>
+      }
+
     </>
   );
 }
