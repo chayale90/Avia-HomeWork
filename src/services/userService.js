@@ -1,6 +1,6 @@
 import { doApiGet, doApiMethod } from "../services/apiService";
 import { toast } from "react-toastify";
-import { ADD_USER, USERS_LIST, USERS_URL } from "../constants/apiConstants";
+import { ADD_USER, USERS_LIST, USERS_URL } from "../constants/apis";
 
 export async function getUsers() {
   try {

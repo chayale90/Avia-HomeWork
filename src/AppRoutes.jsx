@@ -11,7 +11,6 @@ export default function AppRoutes() {
   return (
     <Router>
       <Routes>
-        
         <Route path={ROUTES.HOME} element={<Layout />}>
           <Route index element={<UsersPage />} />
           <Route path={ROUTES.ADD_USER} element={<AddUserPage />} />

@@ -21,15 +21,12 @@ const Header = () => {
     const dispatch = useDispatch();
     const { darkMode } = useSelector(myStore => myStore.darkModeSlice);
 
-    // Navbar states
     const [anchorElUser, setAnchorElUser] = useState(null);
 
-    // Open user menu
     const handleOpenUserMenu = (event) => {
         setAnchorElUser(event.currentTarget);
     };
 
-    // Close user menu
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };

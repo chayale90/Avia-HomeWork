@@ -3,7 +3,6 @@ import rtlPlugin from "stylis-plugin-rtl";
 import { prefixer } from "stylis";
 import createCache from "@emotion/cache";
 
-// Create rtl cache
 export const cacheRtl = createCache({
   key: "muirtl",
   stylisPlugins: [prefixer, rtlPlugin],
@@ -52,11 +51,9 @@ export const theme = responsiveFontSizes(
       },
     },
     palette: {
-      //green
       primary: {
         main: "#155E64",
       },
-      //blue
       secondary: {
         main: "#4169e1",
       },

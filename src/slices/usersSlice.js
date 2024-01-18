@@ -11,7 +11,7 @@ const usersSlice = createSlice({
   reducers: {
     setUsers: (state, action) => {
       state.usersData = [...action.payload];
-      state.isReadJsonData =true
+      state.isReadJsonData = true;
     },
     addUser: (state, action) => {
       state.usersData = [...state.usersData, action.payload];
@@ -20,5 +20,5 @@ const usersSlice = createSlice({
   },
 });
 
-export const { addUser ,setUsers} = usersSlice.actions;
+export const { addUser, setUsers } = usersSlice.actions;
 export default usersSlice.reducer;
