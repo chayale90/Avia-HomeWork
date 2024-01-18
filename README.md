@@ -1,23 +1,27 @@
-React Customer Management Application
-Overview
+# React Customer Management Application
+
+## Overview
+
 This React application is designed for managing customer data. It includes features such as rendering a customer table, searching for customers, filtering by plan, exporting data to CSV, adding new customers, a "Nagishli" button for visually impaired users, global Redux store, and dark mode support. The application is built using React and Redux for state management.
 
-Getting Started
-Clone the repository:
+## Getting Started
 
-bash
-Copy code
-git clone https://github.com/your-username/customer-management-app.git
-Install dependencies:
+1. **Clone the repository:**
 
-bash
-Copy code
-npm install
-Start the development server:
+   ```bash
+   git clone https://github.com/your-username/customer-management-app.git
 
-bash
-Copy code
-npm start
+
+2. **Install dependencies::**
+
+   ```bash
+    npm install
+
+3. **Start the development server:**
+
+   ```bash
+    npm start
+
 The application will be accessible at http://localhost:3000 in your web browser.
 
 Customer Data
