@@ -58,7 +58,8 @@ This feature provides additional support for users with visual difficulties.
 Utilizing a global Redux store, the application ensures a unified and efficient state management system for streamlined handling of customer data across various components.
 
 ### 8. Dark Mode
-Enhance your viewing experience by enabling dark mode, particularly useful in low-light environments. The application offers a dedicated dark mode feature, contributing to improved usability and reduced eye strain during extended usage.
+Enhance your viewing experience by enabling dark mode, particularly useful in low-light environments.
+The application offers a dedicated dark mode feature, contributing to improved usability and reduced eye strain during extended usage.
 
 ## Responsive Design
 The application is designed to be responsive, providing an optimal user experience on smartphones.
