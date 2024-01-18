@@ -7,6 +7,10 @@ export default function UseDataManager() {
     const dispatch = useDispatch();
     const { isReadJsonData } = useSelector(myStore => myStore.usersSlice);
 
+    useEffect(() => {
+        (!isReadJsonData) && getUsersData()
+    }, []);
+
     const getUsersData = async () => {
         try {
             const usersJson = await getUsers();
@@ -16,13 +20,6 @@ export default function UseDataManager() {
             console.log(err);
         }
     }
-    
-    useEffect(() => {
-        (!isReadJsonData) && getUsersData()
-    }, []);
 
-    return {
-        isReadJsonData,
-        getUsersData
-    };
+    return { isReadJsonData, getUsersData };
 }

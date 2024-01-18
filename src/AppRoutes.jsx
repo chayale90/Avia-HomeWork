@@ -3,9 +3,9 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import NotFound from "@/components/generalComps/NotFound";
 import ROUTES from "@/constants/routes";
-import AddUserPage from "./pages/AddUserPage";
-import UsersPage from "./pages/usersPage";
 import Layout from "./layout/Layout";
+import AddUserPage from "./pages/AddUserPage";
+import UsersPage from "./pages/UsersPage";
 
 export default function AppRoutes() {
   return (
