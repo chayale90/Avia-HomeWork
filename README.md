@@ -37,7 +37,7 @@ Ensure that the JSON file containing customer data is hosted on the server. The 
 A React component renders the customer table based on the provided HTML page. It loads customer data from the sample JSON file.
 
 ### 2. Search Field
-The application includes a search field allowing users to dynamically search for customers by name or phone number.
+The application includes a search field allowing users to dynamically search for customers by firstName, lastName or phone number.
 The table updates in real-time as the user types.
 
 ### 3. Filtering by Plan
