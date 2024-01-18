@@ -9,7 +9,7 @@ This React application is designed for managing customer data. It includes featu
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-username/customer-management-app.git
+   git clone https://github.com/chayale90/Avia-HomeWork.git
 
 
 2. **Install dependencies::**
