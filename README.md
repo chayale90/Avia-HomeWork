@@ -60,5 +60,8 @@ Utilizing a global Redux store, the application ensures a unified and efficient 
 ### 8. Dark Mode
 Enhance your viewing experience by enabling dark mode, particularly useful in low-light environments. The application offers a dedicated dark mode feature, contributing to improved usability and reduced eye strain during extended usage.
 
-
+## Responsive Design
+The application is designed to be responsive, providing an optimal user experience on smartphones.
+Access and manage customer data seamlessly on your mobile device, ensuring a consistent and user-friendly interface regardless of the screen size.
+Enjoy the full functionality of the application while on the go.
 
