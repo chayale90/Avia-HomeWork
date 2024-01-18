@@ -1,7 +1,7 @@
 import { Container, Typography } from '@mui/material'
 import { HEADLINES } from '@/constants/labels';
 import UsersList from '@/components/userList/UsersList'
-import UseDataManager from '@/hooks/useDataManager';
+import UseDataManager from '../hooks/UseDataManager';
 
 export default function UsersPage() {
 
