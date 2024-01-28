@@ -7,7 +7,7 @@ export async function getUsers() {
     let resp = await doApiGet(USERS_LIST);
     return resp.data;
   } catch (err) {
-    if (err.response) console.log({ error: err.response.data.message });
+    console.log({ error: err.response.data.message });
     toast.error("יש בעיה בבקשה נסה מאוחר יותר");
     throw err;
   }
@@ -18,7 +18,7 @@ export async function createUser(userData) {
     let resp = await doApiMethod(ADD_USER, "POST", userData);
     return resp.data;
   } catch (err) {
-    if (err.response) console.log({ error: err.response.data.message });
+    console.log({ error: err.response.data.message });
     toast.error("יש בעיה בבקשה נסה מאוחר יותר");
     throw err;
   }
@@ -30,7 +30,7 @@ export async function getUserByEmail(userEmail) {
     let resp = await doApiGet(url);
     return resp.data;
   } catch (err) {
-    if (err.response) console.log({ error: err.response.data.message });
+    console.log({ error: err.response.data.message });
     toast.error("יש בעיה בבקשה נסה מאוחר יותר");
     throw err;
   }
