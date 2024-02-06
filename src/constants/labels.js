@@ -1,6 +1,7 @@
 export const HEADLINES = {
   USERSLIST: "רשימת לקוחות",
-  ADDUSER: "הוספת לקוח"
+  ADDUSER: "הוספת לקוח",
+  USERINFO:"פרטי לקוח"
 };
 
 export const USER_PROPERTIES = {

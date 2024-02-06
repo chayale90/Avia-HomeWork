@@ -16,7 +16,7 @@ export async function getUsers() {
 export async function createUser(userData) {
   try {
     let resp = await doApiMethod(ADD_USER, "POST", userData);
-    return resp.data;
+    return resp;
   } catch (err) {
     console.log({ error: err.response.data.message });
     toast.error("יש בעיה בבקשה נסה מאוחר יותר");

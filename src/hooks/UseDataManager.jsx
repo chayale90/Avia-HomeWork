@@ -1,7 +1,7 @@
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUsers } from "../services/userService";
 import { setUsers } from "../slices/usersSlice";
-import { useEffect } from 'react';
 
 export default function UseDataManager() {
     const dispatch = useDispatch();
