@@ -6,6 +6,7 @@ import ROUTES from "@/constants/routes";
 import Layout from "./layout/Layout";
 import AddUserPage from "./pages/AddUserPage";
 import UsersPage from "./pages/UsersPage";
+import UserInfoPage from "./pages/UserInfoPage";
 
 export default function AppRoutes() {
   return (
@@ -14,6 +15,7 @@ export default function AppRoutes() {
         <Route path={ROUTES.HOME} element={<Layout />}>
           <Route index element={<UsersPage />} />
           <Route path={ROUTES.ADD_USER} element={<AddUserPage />} />
+          <Route path={ROUTES.USER_INFO + ":email"} element={<UserInfoPage />} />
         </Route>
 
         <Route path="*" element={<NotFound />} />
