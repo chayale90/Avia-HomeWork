@@ -17,23 +17,27 @@ export default function AddUser() {
     const [selectedPlan, setSelectedPlan] = useState("");
     const regEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
     const [displayProgress, setDisplayProgress] = useState("none");
-    
-    const addUserToJson = async (userData) => {
-        try {
-            await createUser(userData);
-        }
-        catch (err) {
-            console.log(err);
-        }
-    }
+    const regPhone =/^(?:(?:(\+?972|\(\+?972\)|\+?\(972\))(?:\s|\.|-)?([1-9]\d?))|(0[23489]{1})|(0[57]{1}[0-9]))(?:\s|\.|-)?([^0\D]{1}\d{2}(?:\s|\.|-)?\d{4})$/gm
 
-    const onSubForm = (userData) => {
-        setDisplayProgress("flex");
-        addUserToJson(userData);
-        dispatch(addUser(userData));
-        nav(ROUTES.HOME);
-        toast.success("לקוח נוסף בהצלחה");
-        setDisplayProgress("none");
+    const onSubForm = async (userData) => {
+        setDisplayProgress(true);
+        try {
+            const resp = await createUser(userData);
+            if (resp.status === 201) {
+                dispatch(addUser(userData));
+                nav(ROUTES.HOME);
+                toast.success("לקוח נוסף בהצלחה");
+            }
+            else {
+                nav(ROUTES.HOME);
+                toast.error("יש בעיה בבקשה נסה מאוחר יותר");
+            }
+        } catch (err) {
+            toast.error("יש בעיה בבקשה נסה מאוחר יותר");
+        }
+        finally {
+            setDisplayProgress(false);
+        }
     };
 
 
@@ -81,7 +85,7 @@ export default function AddUser() {
                     <TextField
                         {...register('phone', {
                             required: { value: true, message: 'חובה למלא טלפון' },
-                            pattern: { value: /^[0-9]+$/, message: 'יש להזין ספרות בלבד' },
+                            pattern: { value: regPhone, message: 'המספר לא תקין' },
                             minLength: { value: 9, message: 'טלפון חייב להיות לפחות 9 אותיות' },
                             maxLength: { value: 10, message: 'אורך טלפון חייב להיות עד 10 תווים' }
                         })}

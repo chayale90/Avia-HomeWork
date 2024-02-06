@@ -1,0 +1,7 @@
+.userInfoContainer {
+  text-align: center;
+  border: 1px solid var(--clr-red);
+  border-radius: 30px;
+  padding: var(--space16) 0;
+  margin: auto; 
+}
