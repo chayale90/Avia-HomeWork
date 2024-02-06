@@ -86,8 +86,8 @@ export default function AddUser() {
                         {...register('phone', {
                             required: { value: true, message: 'חובה למלא טלפון' },
                             pattern: { value: regPhone, message: 'המספר לא תקין' },
-                            minLength: { value: 9, message: 'טלפון חייב להיות לפחות 9 אותיות' },
-                            maxLength: { value: 10, message: 'אורך טלפון חייב להיות עד 10 תווים' }
+                            minLength: { value: 9, message: 'טלפון חייב להיות לפחות 9 ספרות' },
+                            maxLength: { value: 10, message: 'אורך טלפון חייב להיות עד 10 ספרות' }
                         })}
                         variant="outlined"
                         fullWidth
