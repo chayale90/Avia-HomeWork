@@ -1,19 +1,25 @@
 import { Box, Button, FormControl, Grid, InputLabel, MenuItem, Paper, Select, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, } from "@mui/material";
-import { useState } from "react";
+import {  useState } from "react";
 import { useSelector } from "react-redux";
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { theme } from "@/theme/theme";
 import ROUTES from '@/constants/routes';
 import { PLANS, USER_PROPERTIES } from "@/constants/labels";
 import { CSVLink } from "react-csv";
+import debounce from 'lodash.debounce';
 //project imports
 import UserListCSS from "./UserList.module.css";
 import Loading from "../generalComps/Loading";
 
 export default function UsersList() {
+  const nav = useNavigate();
   const [search, setSearch] = useState('');
   const [selectedPlan, setselectedPlan] = useState('');
   const { usersData, isReadJsonData } = useSelector(myStore => myStore.usersSlice);
+
+  const handleChangeSearch = debounce((value) => {
+    setSearch(value);
+  }, 500);
 
   const filteredUsers = usersData?.filter((user) => {
     return (
@@ -28,15 +34,15 @@ export default function UsersList() {
   const handleChangePlan = (e) => {
     setselectedPlan(e.target.value);
   }
-
   const textFieldStyles = { ...theme.textField.smallTextField };
+
 
   return (
     <>
       <Grid container className={UserListCSS.actionsTable}>
         <Box sx={{ width: { lg: "45%", xs: "100%" }, display: "flex", gap: 3 }}>
           <TextField
-            onChange={(e) => { setSearch(e.target.value) }}
+            onChange={(e) => { handleChangeSearch(e.target.value) }}
             label="חיפוש לפי שם, שם משפחה, טלפון"
             variant="outlined"
             sx={textFieldStyles}
@@ -80,7 +86,7 @@ export default function UsersList() {
 
       </Grid>
       {usersData.length === 0 ?
-        <Loading display={!isReadJsonData ? "flex" : "none"} sixe="4rem"/>
+        <Loading display={!isReadJsonData ? "flex" : "none"} size="4rem" />
         :
         <TableContainer component={Paper}>
           <Table>
@@ -91,21 +97,25 @@ export default function UsersList() {
                 <TableCell>{USER_PROPERTIES.PHONE}</TableCell>
                 <TableCell>{USER_PROPERTIES.EMAIL}</TableCell>
                 <TableCell>{USER_PROPERTIES.PLAN}</TableCell>
+                <TableCell>פרטים נוספים</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {
-                filteredUsers.map((user, index) => (
-                  <TableRow key={index}>
-                    <TableCell>{user.firstname}</TableCell>
-                    <TableCell>{user.lastname}</TableCell>
-                    <TableCell>{user.phone}</TableCell>
-                    <TableCell>{user.email}</TableCell>
-                    <TableCell>{user.plan}</TableCell>
-                  </TableRow>
-
-                ))}
-
+              {filteredUsers.map((user, index) => (
+                <TableRow key={index}>
+                  <TableCell>{user.firstname}</TableCell>
+                  <TableCell>{user.lastname}</TableCell>
+                  <TableCell>{user.phone}</TableCell>
+                  <TableCell>{user.email}</TableCell>
+                  <TableCell>{user.plan}</TableCell>
+                  <TableCell>
+                    <Button variant="outlined"
+                      onClick={() => { nav(ROUTES.USER_INFO + user.email) }}>
+                      פרטים
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
             </TableBody>
           </Table>
         </TableContainer>
